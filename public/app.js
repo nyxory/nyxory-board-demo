@@ -191,7 +191,7 @@ function praesenzSetzen(zahl) {
 function verbindungsstatus(live) {
   $('puls').classList.toggle('live', live);
   const s = $('ops-status');
-  s.textContent = live ? 'SSE verbunden' : 'Verbindung verloren — verbinde neu …';
+  s.textContent = live ? 'live verbunden' : 'Verbindung verloren — verbinde neu …';
   s.classList.toggle('live', live);
   s.classList.toggle('tot', !live);
 }

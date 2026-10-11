@@ -378,37 +378,61 @@ body {
   gap: 22px;
   flex-wrap: wrap;
   padding: 10px 24px;
-  background: var(--nyxory-dark);
-  color: rgba(255, 255, 255, 0.62);
+  background: #fffdf8;
+  border-top: 1px solid #e6e3da;
+  color: #6b6a60;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.5;
   font-variant-numeric: tabular-nums;
 }
 
 .ops-marke {
-  font-weight: 900;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--nyxory-dark);
-  background: var(--nyxory-acid);
-  padding: 3px 8px;
-  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #16160f;
+  font-weight: 600;
+}
+
+.ops-marke::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #ccff00;
+  box-shadow: 0 0 0 3px rgba(204, 255, 0, 0.25);
 }
 
 .ops-wert b {
-  color: #fff;
-  font-weight: 700;
+  color: #16160f;
+  font-weight: 600;
 }
 
 .ops-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin-left: auto;
 }
 
 .ops-status.live {
-  color: var(--nyxory-acid);
+  color: #7e9c00;
+}
+
+.ops-status.live::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #ccff00;
 }
 
 .ops-status.tot {
-  color: #ff9c5c;
+  color: #b45309;
 }
 
 @media (max-width: 720px) {
