@@ -1,0 +1,455 @@
+/* Theme-Tokens. app.js überschreibt --primary, --accent, --on-* und
+   --font aus /theme.json (siehe theme.json); hier stehen die neutralen Werte. */
+:root {
+  --primary: #16160f;
+  --on-primary: #ffffff;
+  --accent: #ccff00;
+  --on-accent: #16160f;
+  /* Schrift auf hellem Grund: die Marke, stark abgedunkelt, damit sie auf
+     jeder Notizfarbe lesbar bleibt. */
+  --ink: color-mix(in srgb, var(--primary) 40%, #111);
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --surface: #faf9f6;
+  --grau-hell: #e1e1e1;
+  --grau: #5a5a5a;
+  --nyxory-acid: #ccff00;
+  --nyxory-dark: #16160f;
+
+  /* Notizfarben — der Server speichert nur den Index 0–5. Zwei leiten sich
+     aus der Marke ab, vier sind neutrale Pastelltöne. */
+  --n0: color-mix(in srgb, var(--accent) 45%, #fff);
+  --n1: color-mix(in srgb, var(--primary) 20%, #fff);
+  --n2: #ffd8a8;
+  --n3: #b5ecef;
+  --n4: #fff3a3;
+  --n5: #f6c7d6;
+
+  --schatten: color-mix(in srgb, var(--ink) 18%, transparent);
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font);
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Kopf ---------- */
+
+.kopf {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 16px 24px;
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.marke {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.marke-logo {
+  height: 32px;
+  max-width: 120px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 6px;
+  padding: 3px;
+}
+
+.marke-logo[hidden],
+.marke-kreuz[hidden],
+.marke-nyxory[hidden] {
+  display: none;
+}
+
+.marke-name {
+  font-weight: 900;
+}
+
+.marke-kreuz {
+  opacity: 0.5;
+  font-weight: 300;
+}
+
+.marke-nyxory {
+  font-weight: 900;
+  color: var(--nyxory-dark);
+  background: var(--nyxory-acid);
+  padding: 2px 9px;
+  border-radius: 6px;
+}
+
+.kopf-titel {
+  flex: 1;
+  min-width: 220px;
+  border-left: 2px solid color-mix(in srgb, var(--on-primary) 18%, transparent);
+  padding-left: 24px;
+}
+
+.kopf-titel h1 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.kopf-titel p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.praesenz {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--on-primary) 10%, transparent);
+  padding: 8px 14px;
+  border-radius: 100px;
+}
+
+.puls {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--grau);
+  transition: background 0.3s;
+}
+
+.puls.live {
+  background: var(--accent);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 70%, transparent);
+  animation: pulsieren 2.2s infinite;
+}
+
+@keyframes pulsieren {
+  70% {
+    box-shadow: 0 0 0 9px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+/* ---------- Eingabeleiste ---------- */
+
+.leiste {
+  padding: 16px 24px 12px;
+  border-bottom: 1px solid var(--grau-hell);
+  background: #fff;
+}
+
+.verfassen {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.feld {
+  font: inherit;
+  font-weight: 500;
+  color: var(--ink);
+  border: 1.5px solid var(--grau-hell);
+  border-radius: var(--radius);
+  padding: 11px 14px;
+  background: var(--surface);
+  outline: none;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+
+.feld::placeholder {
+  color: #9a9a9a;
+  font-weight: 500;
+}
+
+.feld:focus {
+  border-color: var(--primary);
+  background: #fff;
+}
+
+.feld-name {
+  width: 150px;
+}
+
+.feld-text {
+  flex: 1;
+  min-width: 220px;
+}
+
+.farbwahl {
+  display: flex;
+  gap: 6px;
+}
+
+.farbe {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  outline-offset: 3px;
+  transition: transform 0.12s;
+}
+
+.farbe:hover {
+  transform: scale(1.12);
+}
+
+.farbe[aria-checked="true"] {
+  border-color: var(--ink);
+  box-shadow: inset 0 0 0 2px #fff;
+}
+
+.knopf {
+  font: inherit;
+  font-weight: 700;
+  color: var(--on-primary);
+  background: var(--primary);
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px 26px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.knopf:hover {
+  background: color-mix(in srgb, var(--primary) 80%, #000);
+}
+
+.knopf:disabled {
+  background: var(--grau-hell);
+  color: var(--grau);
+  cursor: not-allowed;
+}
+
+.hinweis {
+  margin: 8px 0 0;
+  font-size: 13px;
+  min-height: 18px;
+  color: #c34161;
+}
+
+/* ---------- Brett ---------- */
+
+.brett {
+  position: relative;
+  flex: 1;
+  margin: 0;
+  overflow: hidden;
+  min-height: 420px;
+  background-image: radial-gradient(circle, var(--grau-hell) 1.2px, transparent 1.2px);
+  background-size: 26px 26px;
+}
+
+.leer {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  margin: 0;
+  color: var(--grau);
+  font-size: 17px;
+  line-height: 1.7;
+  pointer-events: none;
+}
+
+.leer small {
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+/* display:grid oben schlägt sonst das [hidden] des Browsers. */
+.leer[hidden] {
+  display: none;
+}
+
+.notiz {
+  position: absolute;
+  width: clamp(150px, 19vw, 208px);
+  padding: 13px 14px 10px;
+  border-radius: 4px;
+  color: var(--ink);
+  box-shadow:
+    0 1px 2px var(--schatten),
+    0 10px 22px -8px var(--schatten);
+  cursor: grab;
+  user-select: none;
+  touch-action: none; /* nur die Notiz selbst — das Brett darf mobil scrollen */
+  animation: auftauchen 0.28s cubic-bezier(0.2, 1.3, 0.4, 1);
+}
+
+@keyframes auftauchen {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+
+.notiz.zieht {
+  cursor: grabbing;
+  z-index: 50;
+  box-shadow: 0 18px 40px -10px var(--schatten);
+  transform: rotate(-1.5deg) scale(1.04);
+}
+
+.notiz-text {
+  font-size: 15px;
+  line-height: 1.42;
+  font-weight: 600;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.notiz-fuss {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
+  font-size: 12px;
+}
+
+.notiz-autor {
+  flex: 1;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0.75;
+}
+
+.notiz-aktion {
+  font: inherit;
+  font-weight: 700;
+  border: none;
+  background: color-mix(in srgb, var(--ink) 9%, transparent);
+  color: var(--ink);
+  border-radius: 100px;
+  padding: 3px 9px;
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+.notiz-aktion:hover {
+  background: color-mix(in srgb, var(--ink) 20%, transparent);
+}
+
+.notiz-aktion.gewaehlt {
+  background: var(--ink);
+  color: #fff;
+}
+
+/* ---------- Ops-Leiste ---------- */
+
+.ops {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  padding: 10px 24px;
+  background: var(--nyxory-dark);
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ops-marke {
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--nyxory-dark);
+  background: var(--nyxory-acid);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.ops-wert b {
+  color: #fff;
+  font-weight: 700;
+}
+
+.ops-status {
+  margin-left: auto;
+}
+
+.ops-status.live {
+  color: var(--nyxory-acid);
+}
+
+.ops-status.tot {
+  color: #ff9c5c;
+}
+
+@media (max-width: 720px) {
+  .kopf-titel {
+    border-left: none;
+    padding-left: 0;
+  }
+  .feld-name,
+  .feld-text {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+  .knopf {
+    flex: 1;
+  }
+  /* Freie Positionierung braucht Fläche, die ein Handy nicht hat: dort
+     fließen die Notizen als Spalte. Die Koordinaten bleiben gespeichert und
+     gelten wieder, sobald jemand das Board auf einem großen Schirm öffnet. */
+  /* Body ist sonst auf 100% Höhe fixiert — mobil soll das Dokument wachsen
+     und normal scrollen, statt die Notizen unter die Ops-Leiste zu stauchen. */
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
+  }
+  .brett {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    min-height: 0;
+    overflow: visible;
+  }
+  .notiz {
+    position: static;
+    width: 100%;
+    touch-action: auto;
+  }
+  .leer {
+    position: static;
+    padding: 60px 0;
+  }
+}

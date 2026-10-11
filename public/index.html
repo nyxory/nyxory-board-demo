@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Live Impuls-Board</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      id="favicon"
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2316160f'/><rect x='8' y='8' width='16' height='16' rx='3' fill='%23ccff00'/></svg>"
+    />
+  </head>
+  <body>
+    <header class="kopf">
+      <div class="marke">
+        <img class="marke-logo" id="marke-logo" alt="" hidden />
+        <span class="marke-name" id="marke-name">nyxory</span>
+        <span class="marke-kreuz" id="marke-kreuz" hidden>×</span>
+        <span class="marke-nyxory" id="marke-nyxory" hidden>nyxory</span>
+      </div>
+      <div class="kopf-titel">
+        <h1>Live Impuls-Board</h1>
+        <p>Agentic SDLC &amp; AI Ops — gebaut, deployed und betrieben auf nyxory.</p>
+      </div>
+      <div class="praesenz" id="praesenz" aria-live="polite">
+        <span class="puls" id="puls"></span>
+        <span id="online-zahl">0</span> online
+      </div>
+    </header>
+
+    <section class="leiste">
+      <form class="verfassen" id="verfassen" autocomplete="off">
+        <input
+          class="feld feld-name"
+          id="autor"
+          type="text"
+          maxlength="40"
+          placeholder="Dein Name"
+          aria-label="Dein Name"
+          required
+        />
+        <div class="farbwahl" id="farbwahl" role="radiogroup" aria-label="Farbe der Notiz"></div>
+        <input
+          class="feld feld-text"
+          id="text"
+          type="text"
+          maxlength="200"
+          placeholder="Dein Impuls … was soll auf dem Board landen?"
+          aria-label="Text der Notiz"
+          required
+        />
+        <button class="knopf" type="submit">Anheften</button>
+      </form>
+      <p class="hinweis" id="hinweis"></p>
+    </section>
+
+    <main class="brett" id="brett">
+      <p class="leer" id="leer">
+        Noch nichts angeheftet.<br /><small>Der erste Impuls erscheint bei allen gleichzeitig.</small>
+      </p>
+    </main>
+
+    <footer class="ops" id="ops">
+      <span class="ops-marke">AI Ops</span>
+      <span class="ops-wert"><b id="ops-version">–</b> Version</span>
+      <span class="ops-wert"><b id="ops-laufzeit">–</b> Uptime</span>
+      <span class="ops-wert"><b id="ops-notizen">0</b> Notizen persistiert</span>
+      <span class="ops-wert"><b id="ops-online">0</b> Sessions</span>
+      <span class="ops-status" id="ops-status">verbinde …</span>
+    </footer>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "nyxory-board-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Live Impuls-Board, a nyxory demo that brands itself for your company and deploys to nyxory",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "PORT=3000 node server.mjs",
+    "brand": "node scripts/brand-from-domain.mjs",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
