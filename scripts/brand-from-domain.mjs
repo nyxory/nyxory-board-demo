@@ -97,7 +97,7 @@ export function nameFinden(html, host) {
   const teile = titel.split(/\s+[|–—·:-]\s+/).map((s) => s.trim()).filter(Boolean);
   const label = etikett(host).toLowerCase();
   // Das Titelstück, das den Domainnamen enthält, ist meist der Firmenname
-  // ("SAP | Business Software" → "SAP"); sonst das kürzeste Stück.
+  // ("Muster GmbH | Software" → "Muster GmbH"); sonst das kürzeste Stück.
   const passend = teile.filter((t) => t.toLowerCase().replace(/[^a-z0-9]/g, '').includes(label));
   const wahl = (passend.length ? passend : teile).sort((a, b) => a.length - b.length)[0];
   // Ein ganzer Satz ist kein Name ("Schuhe … online bei ZALANDO"): dann nur

@@ -59,7 +59,7 @@ neutral. It tries `www.<domain>` on its own when the bare domain fails.
 
 Show what was found, then ask once, e.g.:
 
-> Gefunden: **SAP**, Primär `#0070f2`, Akzent `#d20a0a`, Logo ✓. Passt das, oder soll ich Name, Farben oder Logo ändern?
+> Gefunden: **Muster GmbH**, Primär `#0057b8`, Akzent `#f5a300`, Logo ✓. Passt das, oder soll ich Name, Farben oder Logo ändern?
 
 If `fallback` lists the colours, ask for the brand colour in the same line.
 Apply corrections directly in `theme.json`: `name`, `primary` and `accent` as
