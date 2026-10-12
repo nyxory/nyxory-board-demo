@@ -10,13 +10,19 @@ their own session, and the company's public homepage. You never write the
 email to a file, a commit, a log or any other service. The only thing that
 leaves this session is `theme.json` (company name, public logo, colours).
 
+**Clone first, deploy last.** Do not pass this GitHub URL to `nyx_brain` or
+`nyx_clone_repo` and deploy it as it is: that ships the neutral, unbranded
+board. Clone the repo in your local shell, do steps 1 to 3 there, and deploy in
+step 4 from the project's own nyxory remote, which carries the branded
+`theme.json`.
+
 ## 1. Find out who it is for
 
 Call `nyx_project_list` on the nyxory MCP. If `account.email` is present, take
 the part after `@` as the company domain.
 
-> As of today the MCP does not return the account email, so this usually
-> comes up empty. Then go straight to the question below.
+Older nyxory instances do not return `account.email`; then go straight to the
+question below.
 
 Ask exactly one short question, and don't guess, when:
 
