@@ -4,15 +4,19 @@ Ein gemeinsames Board für einen Raum voller Leute: jede:r hängt Impulse an,
 alle sehen sie im selben Moment, Notizen lassen sich verschieben und hochstimmen.
 Alles landet in SQLite und überlebt jeden Neustart.
 
-Das Board zieht sich das Erscheinungsbild deiner Firma an. Gib das Repo deinem
-Coding-Agent (Claude Code, Codex, Cursor …) mit verbundenem nyxory-MCP und sag
-„deploy das“: er findet heraus, für welche Firma es ist, holt Name, Logo und
-Farben von deren öffentlicher Website und bringt das Board auf nyxory. Die
-Anleitung für den Agenten steht in [`AGENTS.md`](AGENTS.md).
+Das Board zieht sich das Erscheinungsbild deiner Firma an. Sag deinem
+Coding-Agent (Claude Code, Codex, Cursor …) mit verbundenem nyxory-MCP:
 
-*A shared live board that brands itself for your company. Hand this repo to
-your coding agent with the nyxory MCP connected and say "deploy this". The
-agent instructions are in [`AGENTS.md`](AGENTS.md).*
+> Hol dir github.com/nyxory/nyxory-board-demo, folge der AGENTS.md darin und bring das Board für mich auf nyxory.
+
+Er findet heraus, für welche Firma es ist, holt Name, Logo und Farben von deren
+öffentlicher Website und bringt das Board auf nyxory. Die Anleitung für den
+Agenten steht in [`AGENTS.md`](AGENTS.md).
+
+*A shared live board that brands itself for your company. Tell your coding
+agent with the nyxory MCP connected: "Get github.com/nyxory/nyxory-board-demo,
+follow its AGENTS.md and deploy the board to nyxory for me." The agent
+instructions are in [`AGENTS.md`](AGENTS.md).*
 
 ## Lokal starten
 
