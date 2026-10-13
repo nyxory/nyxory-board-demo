@@ -12,9 +12,11 @@ leaves this session is `theme.json` (company name, public logo, colours).
 
 **Clone first, deploy last.** Do not pass this GitHub URL to `nyx_brain` or
 `nyx_clone_repo` and deploy it as it is: that ships the neutral, unbranded
-board. Clone the repo in your local shell, do steps 1 to 3 there, and deploy in
-step 4 from the project's own nyxory remote, which carries the branded
-`theme.json`.
+board. Clone the repo in your local shell into the current directory, as a
+full clone (no `--depth`: the nyxory remote rejects pushes from shallow
+clones), do steps 1 to 3 there, and deploy in step 4 from the project's own
+nyxory remote, which carries the branded `theme.json`. The user expects the
+branded code in their folder afterwards, not in a temp directory.
 
 ## 1. Find out who it is for
 

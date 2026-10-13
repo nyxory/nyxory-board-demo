@@ -3,7 +3,7 @@
 
 # Stufe 1 liest den Commit aus dem mitgeklonten .git (ohne git-Binary), damit
 # in der Ops-Leiste der deployte Stand steht, und legt das Datenverzeichnis an.
-FROM node:24-slim AS vorbereitung
+FROM node:24-trixie-slim AS vorbereitung
 WORKDIR /src
 COPY .git .git
 RUN node -e "\
@@ -25,7 +25,7 @@ fs.writeFileSync('/version.txt', v.slice(0,7));" \
  && mkdir -p /data
 
 # Laufzeit: distroless (keine Shell, kein Paketmanager), als nonroot (65532).
-FROM gcr.io/distroless/nodejs24-debian12:nonroot
+FROM gcr.io/distroless/nodejs24-debian13:nonroot
 ENV NODE_ENV=production PORT=8080
 WORKDIR /app
 COPY package.json server.mjs theme.json ./
